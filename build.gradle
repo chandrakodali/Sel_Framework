@@ -1,0 +1,58 @@
+plugins {
+    id("java")
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+//sourceSets {
+//    main {
+//        resources {
+//            srcDirs = ["src/main/resources"]
+//        }
+//    }
+//    test {
+//        resources {
+//            srcDirs = ["src/test/resources"]
+//        }
+//    }
+
+dependencies {
+    // Test Dependencies
+    implementation("org.testng:testng:7.5.1")
+    implementation("io.rest-assured:rest-assured:5.5.0")
+
+    // Selenium & WebDriver
+    implementation("org.seleniumhq.selenium:selenium-java:4.20.0")
+    implementation("io.github.bonigarcia:webdrivermanager:5.5.0")
+
+    // Reporting & Logging
+    implementation("com.aventstack:extentreports:5.1.2")
+    implementation("org.apache.logging.log4j:log4j-core:2.23.1")
+    implementation("org.slf4j:slf4j-api:2.0.16")
+
+    // Utilities
+    implementation("com.jayway.jsonpath:json-path:2.9.0")
+    implementation("org.apache.commons:commons-csv:1.11.0")
+    implementation("net.rcarz:jira-client:0.5")
+    implementation("com.opencsv:opencsv:5.7.1")
+
+    // Apache POI (avoid duplicate declarations)
+    implementation("org.apache.poi:poi:5.2.3")
+    implementation("org.apache.poi:poi-ooxml:5.2.3")
+    implementation("org.apache.xmlbeans:xmlbeans:5.1.1")
+}
+
+test{
+    systemProperties(System.getProperties())
+    useTestNG(){
+        dependsOn(cleanTest)
+        useDefaultListeners = true
+    }
+}
+
+
