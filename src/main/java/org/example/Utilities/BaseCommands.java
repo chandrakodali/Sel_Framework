@@ -17,6 +17,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -722,6 +724,14 @@ public class BaseCommands {
             System.err.println("Failed to create directory: " + dirName);
             e.printStackTrace();
         }
+    }
+
+    public static String getUniqueDateTime() {
+        // Get current date and time
+        LocalDateTime now = LocalDateTime.now();
+        // Format as yyyyMMddHHmmss for uniqueness and return as a string
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        return now.format(formatter);
     }
 
 

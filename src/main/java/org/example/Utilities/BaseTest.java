@@ -32,9 +32,8 @@ public class BaseTest {
 
     public static final ReadProperty readProperty = ReadProperty.getInstance();
     public static final String URL = readProperty.readProperties("Url");
-//    public static final String URL = "https://www.apple.com";
 
-    //    public static final String testDataExcel = System.getProperty("user.dir") + readProperty.readProperties("");
+    public static final String testDataExcel = System.getProperty("user.dir") + readProperty.readProperties("testDataPath");
     public static String downloadFolder = System.getProperty("user.dir")+ "\\downloads\\";
     public static final String gridURL = readProperty.readProperties("gridUrl");
     public static final String browser = readProperty.readProperties("browserName");
