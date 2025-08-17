@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  healenium-postgres:
+    image: postgres:12-alpine
+    container_name: healenium-postgres
+    environment:
+      - POSTGRES_DB=healenium
+      - POSTGRES_USER=healenium_user
+      - POSTGRES_PASSWORD=YourPassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - healenium
+
+  healenium-backend:
+    image: healenium/hlm-backend:3.4.3
+    container_name: healenium-backend
+    environment:
+      - POSTGRES_DB=healenium
+      - POSTGRES_USER=healenium_user
+      - POSTGRES_PASSWORD=YourPassword
+      - POSTGRES_URL=jdbc:postgresql://healenium-postgres:5432/healenium
+    ports:
+      - "7878:7878"
+    depends_on:
+      - healenium-postgres
+    networks:
+      - healenium
+
+  healenium-selector-imitator:
+    image: healenium/hlm-selector-imitator:1.4
+    container_name: healenium-selector-imitator
+    ports:
+      - "8000:8000"
+    networks:
+      - healenium
+
+networks:
+  healenium:
+    driver: bridge

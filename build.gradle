@@ -41,10 +41,16 @@ dependencies {
     implementation("net.rcarz:jira-client:0.5")
     implementation("com.opencsv:opencsv:5.7.1")
 
-    // Apache POI (avoid duplicate declarations)
+    // Apache POI
     implementation("org.apache.poi:poi:5.2.3")
     implementation("org.apache.poi:poi-ooxml:5.2.3")
     implementation("org.apache.xmlbeans:xmlbeans:5.1.1")
+
+    //Healenium
+    // https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
+    implementation("com.epam.healenium:healenium-web:3.5.6")
+
+
 }
 
 test{
