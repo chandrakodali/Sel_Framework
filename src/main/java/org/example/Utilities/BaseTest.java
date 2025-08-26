@@ -116,10 +116,25 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-session-crashed-bubble");
         chromeOptions.addArguments("--disable-popup-blocking");
         chromeOptions.addArguments("--no-first-run");
-        chromeOptions.addArguments("--start-maximized"); // Optional: start maximized
-//        chromeOptions.addExtensions()
 
-}
+        // Add these CI-specific options
+        if (System.getProperty("headless", "false").equals("true") ||
+                System.getenv("CI") != null ||
+                System.getenv("GITHUB_ACTIONS") != null) {
+
+            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--window-size=1920,1080");
+            chromeOptions.addArguments("--disable-gpu");
+            chromeOptions.addArguments("--disable-extensions");
+            chromeOptions.addArguments("--no-first-run");
+            chromeOptions.addArguments("--disable-default-apps");
+            chromeOptions.addArguments("--disable-web-security");
+            chromeOptions.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
+
+        } else {
+            chromeOptions.addArguments("--start-maximized");
+        }
+    }
     public void getFirefoxBrowserOptions(){
     firefoxOptions = new FirefoxOptions();
     HashMap<String, Object >fireFoxPrefs = new HashMap<String, Object>();
