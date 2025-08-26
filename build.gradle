@@ -46,9 +46,9 @@ dependencies {
     implementation("org.apache.poi:poi-ooxml:5.2.3")
     implementation("org.apache.xmlbeans:xmlbeans:5.1.1")
 
-    //Healenium
-    // https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
-    implementation("com.epam.healenium:healenium-web:3.5.6")
+//    //Healenium
+//    // https://mvnrepository.com/artifact/com.epam.healenium/healenium-web
+//    implementation("com.epam.healenium:healenium-web:3.5.6")
 
 
 }
