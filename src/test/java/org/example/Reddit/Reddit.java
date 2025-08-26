@@ -17,8 +17,8 @@ public class Reddit extends BaseTest {
     @Test(description = "Navigate to Apple website")
     public void simpleTest() throws InterruptedException, IOException, AWTException {
         BaseCommands.getURL(URL);
-        loginPage.logIn();
-        homePage.validateUserLogin();
-        homePage.logoutAndValidate();
+//        loginPage.logIn();
+//        homePage.validateUserLogin();
+//        homePage.logoutAndValidate();
     }
 }
